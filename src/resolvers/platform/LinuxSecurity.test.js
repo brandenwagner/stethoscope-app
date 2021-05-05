@@ -13,7 +13,7 @@ describe('Linux applications resolver', () => {
 
     kmd.mockResolvedValue({
       apps: [
-        {name: 'barSuite', version: '10.0.3'}
+        { name: 'barSuite', version: '10.0.3' }
       ]
     })
 
@@ -23,22 +23,22 @@ describe('Linux applications resolver', () => {
         {
           name,
           platform: {
-            linux: ">=14.04"
+            linux: '>=14.04'
           }
         }
       ],
       {}
     )
 
-    expect(result[0].reason).toEqual("NOT_INSTALLED")
- })
+    expect(result[0].reason).toEqual('NOT_INSTALLED')
+  })
 
   it('specifies reason when out of date', async () => {
     const name = 'fooApp'
 
     kmd.mockResolvedValue({
       apps: [
-        {name: 'fooApp', version: '1.0.0'}
+        { name: 'fooApp', version: '1.0.0' }
       ]
     })
 
@@ -47,26 +47,26 @@ describe('Linux applications resolver', () => {
       [
         {
           name,
-          version: ">=2.0.0",
+          version: '>=2.0.0',
           platform: {
-            linux: ">=14.04"
+            linux: '>=14.04'
           }
         }
       ],
       {}
     )
 
-    expect(result[0].reason).toEqual("OUT_OF_DATE")
- })
+    expect(result[0].reason).toEqual('OUT_OF_DATE')
+  })
 
- it('ignores debian version epoch', async () => {
-   // see https://manpages.debian.org/stretch/dpkg-dev/deb-version.5.en.html
+  it('ignores debian version epoch', async () => {
+    // see https://manpages.debian.org/stretch/dpkg-dev/deb-version.5.en.html
     const name = 'fooApp'
     const versionWithEpoch = '3:2.0.4'
 
     kmd.mockResolvedValue({
       apps: [
-        {name: 'fooApp', version: versionWithEpoch}
+        { name: 'fooApp', version: versionWithEpoch }
       ]
     })
 
@@ -75,9 +75,9 @@ describe('Linux applications resolver', () => {
       [
         {
           name,
-          version: ">=2.0.0",
+          version: '>=2.0.0',
           platform: {
-            linux: ">=14.04"
+            linux: '>=14.04'
           }
         }
       ],
@@ -85,16 +85,16 @@ describe('Linux applications resolver', () => {
     )
 
     expect(result[0].version).toEqual(versionWithEpoch)
- })
+  })
 
- it('ignores trailing debian revisions', async () => {
-   // see https://manpages.debian.org/stretch/dpkg-dev/deb-version.5.en.html
+  it('ignores trailing debian revisions', async () => {
+    // see https://manpages.debian.org/stretch/dpkg-dev/deb-version.5.en.html
     const name = 'fooApp'
     const debianVersion = '3.28.0.2-1ubuntu1.18.04.1'
 
     kmd.mockResolvedValue({
       apps: [
-        {name: 'fooApp', version: debianVersion}
+        { name: 'fooApp', version: debianVersion }
       ]
     })
 
@@ -103,9 +103,9 @@ describe('Linux applications resolver', () => {
       [
         {
           name,
-          version: "=3.28.0",
+          version: '=3.28.0',
           platform: {
-            linux: ">=14.04"
+            linux: '>=14.04'
           }
         }
       ],
@@ -113,6 +113,5 @@ describe('Linux applications resolver', () => {
     )
 
     expect(result[0].version).toEqual(debianVersion)
- })
-
+  })
 })

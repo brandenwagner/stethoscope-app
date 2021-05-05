@@ -15,7 +15,7 @@ describe('Windows applications resolver', () => {
 
     kmd.mockResolvedValue({
       apps: [
-        {name: 'fooApp', version: '1.2.3'}
+        { name: 'fooApp', version: '1.2.3' }
       ]
     })
 
@@ -28,7 +28,7 @@ describe('Windows applications resolver', () => {
             win32: path
           },
           platform: {
-            win32: ">=10.0"
+            win32: '>=10.0'
           }
         }
       ],
@@ -42,7 +42,7 @@ describe('Windows applications resolver', () => {
 
     kmd.mockResolvedValue({
       apps: [
-        {name: 'fooApp', version: '1.2.3'}
+        { name: 'fooApp', version: '1.2.3' }
       ]
     })
 
@@ -52,21 +52,21 @@ describe('Windows applications resolver', () => {
         {
           name,
           platform: {
-            win32: ">=10.0"
+            win32: '>=10.0'
           }
         }
       ],
       {}
     )
     expect(kmd.mock.calls[0][2]).toEqual({ REGISTRY_PATH: DEFAULT_WIN32_APP_REGISTRY_PATH })
- })
+  })
 
   it('specifies reason when not installed', async () => {
     const name = 'fooApp'
 
     kmd.mockResolvedValue({
       apps: [
-        {name: 'barSuite', version: '10.0.3'}
+        { name: 'barSuite', version: '10.0.3' }
       ]
     })
 
@@ -76,22 +76,22 @@ describe('Windows applications resolver', () => {
         {
           name,
           platform: {
-            win32: ">=10.0"
+            win32: '>=10.0'
           }
         }
       ],
       {}
     )
 
-    expect(result[0].reason).toEqual("NOT_INSTALLED")
- })
+    expect(result[0].reason).toEqual('NOT_INSTALLED')
+  })
 
   it('specifies reason when out of date', async () => {
     const name = 'fooApp'
 
     kmd.mockResolvedValue({
       apps: [
-        {name: 'fooApp', version: '1.0.0'}
+        { name: 'fooApp', version: '1.0.0' }
       ]
     })
 
@@ -100,15 +100,15 @@ describe('Windows applications resolver', () => {
       [
         {
           name,
-          version: ">=2.0.0",
+          version: '>=2.0.0',
           platform: {
-            win32: ">=10.0"
+            win32: '>=10.0'
           }
         }
       ],
       {}
     )
 
-    expect(result[0].reason).toEqual("OUT_OF_DATE")
- })
+    expect(result[0].reason).toEqual('OUT_OF_DATE')
+  })
 })

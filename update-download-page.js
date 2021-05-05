@@ -8,7 +8,7 @@ const rev = readFileSync('.git/HEAD').toString()
 let revision = rev.trim()
 
 if (rev.includes(':')) {
-  const [ , pth ] = rev.split(': ')
+  const [, pth] = rev.split(': ')
   revision = readFileSync(`.git/${pth.trim()}`)
 }
 

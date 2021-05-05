@@ -46,8 +46,7 @@ export default {
     return delayOk && idleOk
   },
 
-async applications (root, appsToValidate, context) {
-
+  async applications (root, appsToValidate, context) {
     const foundApps = (await kmd('apps', context)).apps
 
     return appsToValidate.map(({

@@ -13,7 +13,7 @@ export default {
     const volumes = (disks.volumes || []).filter(vol => vol.type !== 'squashfs')
 
     // set encrypted flag for LUKS volumes
-    volumes.forEach(vol => { vol.encrypted = vol.type === 'crypto_LUKS' });
+    volumes.forEach(vol => { vol.encrypted = vol.type === 'crypto_LUKS' })
 
     return volumes
   }

@@ -21,7 +21,7 @@ describe('MacOS applications resolver', () => {
             darwin: path
           },
           platform: {
-            darwin: ">=10.12.0"
+            darwin: '>=10.12.0'
           }
         }
       ],
@@ -38,7 +38,7 @@ describe('MacOS applications resolver', () => {
         {
           name,
           platform: {
-            darwin: ">=10.12.0"
+            darwin: '>=10.12.0'
           }
         }
       ],
