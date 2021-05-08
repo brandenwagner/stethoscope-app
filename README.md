@@ -1,5 +1,5 @@
 # Stethoscope app
-This was originally created by [Netflix] (https://www.github.com/Netflix-Skunkworks/stethoscope-app
+This was originally created by [Netflix](https://www.github.com/Netflix-Skunkworks/stethoscope-app)
 
 The Stethoscope app is a desktop application created by Netflix that checks security-related settings and makes recommendations for improving the configuration of your computer, without requiring central device management or automated reporting.
 
