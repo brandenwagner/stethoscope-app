@@ -9,7 +9,7 @@ let basePath = path.join(
 )
 
 if (os.platform() === 'win32') {
-  basePath = path.resolve('%LOCALAPPDATA%\\Google\\Chrome\\User Data\\Default\\Extensions\\fmkadmapgofadopljbjfkapdkoienihi')
+  basePath = path.resolve(process.env.LOCALAPPDATA+"\\Google\\Chrome\\User Data\\Default\\Extensions\\fmkadmapgofadopljbjfkapdkoienihi")
 }
 
 export default function loadReactDevTools (BrowserWindow) {
