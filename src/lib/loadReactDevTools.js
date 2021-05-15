@@ -9,15 +9,15 @@ let basePath = path.join(
 )
 
 if (os.platform() === 'win32') {
-  basePath = path.resolve(process.env.LOCALAPPDATA+"\\Google\\Chrome\\User Data\\Default\\Extensions\\fmkadmapgofadopljbjfkapdkoienihi")
+  basePath = path.resolve(process.env.LOCALAPPDATA + '\\Google\\Chrome\\User Data\\Default\\Extensions\\fmkadmapgofadopljbjfkapdkoienihi')
 }
 
-export default function loadReactDevTools (BrowserWindow) {
+export default function loadReactDevTools (session) {
   fs.readdir(basePath, function (err, items) {
     if (!err) {
       const [version] = items
       if (version) {
-        BrowserWindow.addDevToolsExtension(`${basePath}${path.sep}${String(version).trim()}`)
+        session.defaultSession.loadExtension(`${basePath}${path.sep}${String(version).trim()}`)
         log.info('Added React Dev Tools extension')
       } else {
         log.info('ReactDevTools extension not found in Chrome extensions dir')

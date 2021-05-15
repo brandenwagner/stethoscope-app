@@ -111,7 +111,7 @@ async function createWindow () {
 
   mainWindow = new BrowserWindow(windowPrefs)
 
-  if (IS_DEV) loadReactDevTools(BrowserWindow)
+  if (IS_DEV) loadReactDevTools(session)
   // open developer console if env vars or args request
   if (enableDebugger || DEBUG_MODE) {
     mainWindow.webContents.openDevTools()
