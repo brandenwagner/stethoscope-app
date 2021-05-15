@@ -24,10 +24,8 @@ import yaml from 'js-yaml'
 const Schema = readFileSync(path.join(__dirname, '../schema.graphql'), 'utf8')
 const IS_DEV = process.env.STETHOSCOPE_ENV === 'development'
 const app = express()
-const server = require('http').createServer(app);
-const io = require('socket.io')(server)
-//const server = new Server(app)
-//const io = socketio(server, { wsEngine: 'ws' })
+const server = new Server(app)
+const io = socketio(server)
 
 function matchHost (origin) {
   return label => {
